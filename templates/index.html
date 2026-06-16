@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🎮 Hangman Game</h1>
+
+        <p class="subtitle">
+            Guess the hidden word before the hangman is complete!
+        </p>
+
+        <!-- Difficulty -->
+
+        <div class="difficulty">
+
+            <label for="difficulty">Difficulty:</label>
+
+            <select id="difficulty">
+
+                <option value="easy">Easy</option>
+
+                <option value="medium" selected>Medium</option>
+
+                <option value="hard">Hard</option>
+
+            </select>
+
+        </div>
+
+        <!-- Top Bar -->
+
+        <div class="top-bar">
+
+            <div class="score">
+
+                ⭐ Score :
+                <span id="score">0</span>
+
+                <br>
+
+                🏆 High Score :
+                <span id="highScore">0</span>
+
+            </div>
+
+            <div class="lives">
+
+                ❤️❤️❤️❤️❤️❤️
+
+            </div>
+
+        </div>
+
+        <!-- Timer -->
+
+        <div class="timer">
+
+            ⏱️ Time Left :
+            <span id="timer">60</span>s
+
+        </div>
+
+        <!-- Hangman -->
+
+        <div class="hangman">
+
+            <svg width="220" height="250">
+
+                <!-- Stand -->
+
+                <line x1="20" y1="230" x2="150" y2="230"
+                    stroke="black" stroke-width="4"/>
+
+                <line x1="50" y1="230" x2="50" y2="20"
+                    stroke="black" stroke-width="4"/>
+
+                <line x1="50" y1="20" x2="150" y2="20"
+                    stroke="black" stroke-width="4"/>
+
+                <line x1="150" y1="20" x2="150" y2="50"
+                    stroke="black" stroke-width="4"/>
+
+                <!-- Body Parts -->
+
+                <circle id="head"
+                    cx="150"
+                    cy="70"
+                    r="20"
+                    stroke="black"
+                    stroke-width="4"
+                    fill="none"
+                    visibility="hidden"/>
+
+                <line id="body"
+                    x1="150"
+                    y1="90"
+                    x2="150"
+                    y2="150"
+                    stroke="black"
+                    stroke-width="4"
+                    visibility="hidden"/>
+
+                <line id="leftArm"
+                    x1="150"
+                    y1="110"
+                    x2="120"
+                    y2="130"
+                    stroke="black"
+                    stroke-width="4"
+                    visibility="hidden"/>
+
+                <line id="rightArm"
+                    x1="150"
+                    y1="110"
+                    x2="180"
+                    y2="130"
+                    stroke="black"
+                    stroke-width="4"
+                    visibility="hidden"/>
+
+                <line id="leftLeg"
+                    x1="150"
+                    y1="150"
+                    x2="125"
+                    y2="190"
+                    stroke="black"
+                    stroke-width="4"
+                    visibility="hidden"/>
+
+                <line id="rightLeg"
+                    x1="150"
+                    y1="150"
+                    x2="175"
+                    y2="190"
+                    stroke="black"
+                    stroke-width="4"
+                    visibility="hidden"/>
+
+            </svg>
+
+        </div>
+
+        <!-- Word -->
+
+        <div id="word" class="word">
+
+            _ _ _ _ _
+
+        </div>
+
+        <!-- Keyboard -->
+
+        <div id="keyboard" class="keyboard">
+
+        </div>
+
+        <!-- Message -->
+
+        <div id="message" class="message">
+
+        </div>
+
+        <!-- Restart -->
+
+        <button id="restartBtn">
+
+            🔄 Play Again
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
